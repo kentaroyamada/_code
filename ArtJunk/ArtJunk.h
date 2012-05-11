@@ -29,5 +29,5 @@
 
 
 - (id)initWithContentsOfDictionary:(NSDictionary *)dictionary;
-
+- (NSString *)toJSON;
 @end

@@ -28,7 +28,7 @@
     __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [ASIHTTPRequest setShouldThrottleBandwidthForWWAN:YES];
     
-        
+    
     
     // Set it to post json data with a user authenticationId in the header
     if (isPost) {
@@ -41,7 +41,7 @@
     request.timeOutSeconds = 200;
     //[request setNumberOfTimesToRetryOnTimeout:2];
     
-
+    
     
     if (self.params != nil) {
         NSMutableData *jsonData = [[self.params dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
@@ -55,7 +55,7 @@
     [request setCompletionBlock:^{ 
         if (self.delegate && [self.delegate respondsToSelector:@selector(httpRequestWithMethod:completed:)]) {
             //            NSLog(@"LMHttpManager %@", NSStringFromSelector(_cmd));
-           // NSLog(@"Response String%@", [request responseString]);
+            NSLog(@"Response String%@", [request responseString]);
             
             
             
@@ -100,7 +100,7 @@
 }
 
 - (void)httpPostWithMethod:(NSString *)name params:(NSString *)json{
-    //    NSLog(@"LMHttpManager:%@ JSON Sent:%@", NSStringFromSelector(_cmd),json);
+    NSLog(@"LMHttpManager:%@ JSON Sent:%@", NSStringFromSelector(_cmd),json);
     
     [self httpRequestWithMethod:name params:json post:YES];
 }

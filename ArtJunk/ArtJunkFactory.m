@@ -19,7 +19,7 @@
 
 
 - (void)artJunkDidDownloadWithRequest:(NSData *)data;
-- (void)artJunkDidSaveWithRequest:(NSData *)data;
+- (void)artJunkDidSaveWithRequest:(ASIHTTPRequest *)request;
 
 @end
 
@@ -27,22 +27,22 @@
 
 
 - (void)artJunkDidDownloadWithRequest:(NSData *)responseData {
-            //parse out the json data
-        NSError* error;
-        NSDictionary* json = [NSJSONSerialization 
-                              JSONObjectWithData:responseData //1
-                              
-                              options:kNilOptions 
-                              error:&error];
-// Parse JSON, create artjunk objects, return array of aj
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization 
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions 
+                          error:&error];
+    // Parse JSON, create artjunk objects, return array of aj
     NSMutableArray * artjunks = [[NSMutableArray alloc] init];
     for (NSDictionary * artjunkDic in json) {
         ArtJunk * anArtJunk = [[ArtJunk alloc] initWithContentsOfDictionary:artjunkDic];
         [artjunks addObject:anArtJunk];
     }
-
-            
-            NSLog(@"artjunk: %@", artjunks);
+    
+    
+    NSLog(@"artjunk: %@", artjunks);
     
     // Respond back to delegate in main thread as UI changes will occur
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -57,8 +57,8 @@
 
 
 
-- (void)artJunkDidSaveWithRequest:(NSData *)responseData {
-     
+- (void)artJunkDidSaveWithRequest:(ASIFormDataRequest *)request  {
+    
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -81,7 +81,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-                
+        
     }
     return self;
 }
@@ -93,20 +93,6 @@
     }
     return self;
 }
-
-
-- (NSMutableArray *)artjunks {
-    
-    return self.artjunks;
-}
-
-
-
-- (void)clear {
-
-}
-
-
 
 
 
@@ -123,54 +109,28 @@
                                withObject:data waitUntilDone:YES];
     });
     
-    }
+}
 
 
 - (void)upload:(ArtJunk *)artjunk {
-    NSURL *url = [NSURL URLWithString:kURLArtJunkSave];
-    NSNumber * status = [NSNumber numberWithBool:artjunk.status];
-
-    NSNumber * longitude = [NSNumber numberWithDouble:artjunk.coordinate.longitude];
-    NSNumber * latitude = [NSNumber numberWithDouble:artjunk.coordinate.latitude];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    NSLog(@"title:%@",artjunk.ajTitle);
-    //artjunk.ajTitle
-    [request setPostValue:@"fuuuuuhhhhh" forKey:@"title"];
-    [request setPostValue:longitude forKey:@"longitude"];
-    [request setPostValue:latitude forKey:@"latitude"];
-    [request setPostValue:status forKey:@"status"];
-    [request setDelegate:self];
-    [request setDidFinishSelector:@selector(requestFinished:)];
-    [request setDidFailSelector:@selector(requestFailed:)];
-    [request startAsynchronous];    
+    [httpManager httpPostWithMethod:methodSave params:[artjunk toJSON]];
     
-
-
     
 }
 
 
 
 
-- (BOOL)save {
-    return true;
-}
 
-#pragma mark - ASIHttpRequestDelegate
+#pragma mark - LMHttpManager delegate
 
-- (void)requestFinished:(ASIHTTPRequest *)request {
-    NSLog(@"%@",[request responseString]);
-  //  NSLog(@"%@",[request responseStatusCode]);
-    NSLog(@"%@",[request responseData]);
-    [self artJunkDidSaveWithRequest:[request responseData]];
-
+- (void)httpRequestWithMethod:(NSString *)name completed:(ASIFormDataRequest *)request {
     
+    // If the method completed
+    if ([name isEqualToString:methodSave]) {
+        [self artJunkDidSaveWithRequest:request];
+    }
 }
-- (void)requestFailed:(ASIHTTPRequest *)request {
-    NSLog(@"%@",[request responseString]);    
-}
-
-
 @end
 

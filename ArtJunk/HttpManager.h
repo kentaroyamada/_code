@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ASIFormDataRequest.h"
 
-#define httpRequestBaseUrl @"http://www.brodynelson.com/"
+#define httpRequestBaseUrl @"http://www.brodynelson.com/artjunk/"
 
 typedef enum LMHttpResponseCode {
     LMHttpResponseOkay = 200,

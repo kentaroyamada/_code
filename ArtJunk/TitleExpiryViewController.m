@@ -35,11 +35,11 @@
 #pragma mark - View lifecycle
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView
+ {
+ }
+ */
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -49,7 +49,7 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-
+    
     factory = [[ArtJunkFactory alloc] initWithDelegate:self];
     
     
@@ -116,7 +116,7 @@
 -(void) artJunkDidSave:(BOOL)success {
     
     
-
+    
     
     if (success) {
         //notify user save successful 
@@ -125,10 +125,10 @@
                               @"The ArtJunk was saved successfully." 
                                                        delegate:nil
                                               cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok") 
-                                            otherButtonTitles:nil, nil];
+                                              otherButtonTitles:nil, nil];
         [alert show];
         [self.navigationController popToRootViewControllerAnimated:YES];
-    
+        
     }
     else { //epic fail
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ArtJunk Failed to Upload"
@@ -138,7 +138,7 @@
                                               cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok") 
                                               otherButtonTitles:nil, nil];
         [alert show];
-
+        
     }
 }
 
@@ -146,7 +146,7 @@
 - (IBAction)submitArtjunk:(id)sender {
     
     [factory upload:self.artjunk];
-
+    
     
 }
 

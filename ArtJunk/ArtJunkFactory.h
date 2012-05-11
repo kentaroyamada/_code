@@ -7,36 +7,35 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
+#import "HttpManager.h"
 
 #define kURLArtJunkGet           @"http://www.brodynelson.com/artjunk/get"
 #define kURLArtJunkSave          @"http://www.brodynelson.com/artjunk/submit"
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) 
-
+#define methodSave               @"submit"
 
 
 @class ArtJunk;
 @class Material;
 
-@protocol ArtJunkFactoryDelegate <NSObject, ASIHTTPRequestDelegate>
+@protocol ArtJunkFactoryDelegate <NSObject, HttpManagerDelegate>
 @optional
 -(void) artJunkDidDownload:(NSMutableArray *)artjunks;
 -(void) artJunkDidSave:(BOOL)success;
 @end
-  
+
 @interface ArtJunkFactory : NSObject {
 @private
-
+    HttpManager *httpManager;
+    
+    
 }
 
 @property (nonatomic, assign) id<ArtJunkFactoryDelegate>delegate;
 
 - (id)initWithDelegate:(id<ArtJunkFactoryDelegate>)delegate;
-- (void)clear;
-- (NSMutableArray*)artjunks;
 - (void)download;
 - (void)upload:(ArtJunk*)artjunk;
-- (BOOL)save;
 
 
 @end
