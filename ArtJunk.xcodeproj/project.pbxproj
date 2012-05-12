@@ -67,7 +67,7 @@
 		1B57E65E14FBE18700B18468 /* ArtJunk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArtJunk-Prefix.pch"; sourceTree = "<group>"; };
 		1B57E65F14FBE18700B18468 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1B57E66014FBE18700B18468 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1B57E66314FBE18700B18468 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = ../../../../../Dropbox/xcode/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		1B57E66314FBE18700B18468 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = ../../../../../Dropbox/xcode/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1B57E67014FBE41300B18468 /* PostJunkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostJunkController.h; sourceTree = "<group>"; };
 		1B57E67114FBE41300B18468 /* PostJunkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostJunkController.m; sourceTree = "<group>"; };
 		1B57E67314FBE54200B18468 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
