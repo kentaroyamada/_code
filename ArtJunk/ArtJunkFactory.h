@@ -18,13 +18,13 @@
 @class ArtJunk;
 @class Material;
 
-@protocol ArtJunkFactoryDelegate <NSObject, HttpManagerDelegate>
+@protocol ArtJunkFactoryDelegate <NSObject>
 @optional
 -(void) artJunkDidDownload:(NSMutableArray *)artjunks;
 -(void) artJunkDidSave:(BOOL)success;
 @end
 
-@interface ArtJunkFactory : NSObject {
+@interface ArtJunkFactory : NSObject <HttpManagerDelegate> {
 @private
     HttpManager *httpManager;
     

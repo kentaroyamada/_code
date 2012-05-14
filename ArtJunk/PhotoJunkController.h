@@ -11,6 +11,10 @@
 
 @interface PhotoJunkController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *photoButton;
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
+
+- (IBAction)takePhoto:(id)sender;
+
 @end

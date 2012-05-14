@@ -29,11 +29,13 @@
 - (void)artJunkDidDownloadWithRequest:(NSData *)responseData {
     //parse out the json data
     NSError* error;
+    NSLog(@"JC:%@",responseData);
     NSDictionary* json = [NSJSONSerialization 
                           JSONObjectWithData:responseData //1
                           
                           options:kNilOptions 
                           error:&error];
+    
     // Parse JSON, create artjunk objects, return array of aj
     NSMutableArray * artjunks = [[NSMutableArray alloc] init];
     for (NSDictionary * artjunkDic in json) {
@@ -81,7 +83,8 @@
 - (id)init {
     self = [super init];
     if (self) {
-        
+        httpManager = [[HttpManager alloc] initWithDelegate:self];
+
     }
     return self;
 }

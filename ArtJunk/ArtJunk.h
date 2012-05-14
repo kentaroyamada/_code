@@ -15,7 +15,7 @@
 #define keyLongitude    @"longitude"
 #define keyLatitude     @"latitude"
 #define keyStatus       @"status"
-#define kImagePath      @"http://www.brodynelson.com/artjunk/images/"
+#define kImagePath      @"http://www.brodynelson.com/artjunk/submit/uploads/"
 
 @interface ArtJunk : NSObject <MKAnnotation>
 

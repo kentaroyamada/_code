@@ -10,6 +10,7 @@
 
 @implementation PhotoJunkController
 
+@synthesize photoButton = _photoButton;
 @synthesize imagePickerController = _imagePickerController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,15 +47,13 @@
     _imagePickerController = [[UIImagePickerController alloc] init];
     _imagePickerController.delegate = self;
     
-    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentModalViewController:_imagePickerController animated:NO];
-    
+       
 }
 
 
 - (void)viewDidUnload
 {
+    [self setPhotoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -89,4 +88,11 @@
 
 
 
+- (IBAction)takePhoto:(id)sender {
+    
+    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:_imagePickerController animated:NO];
+
+}
 @end

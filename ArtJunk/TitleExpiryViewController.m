@@ -49,9 +49,7 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    
-    factory = [[ArtJunkFactory alloc] initWithDelegate:self];
-    
+        
     
 }
 
@@ -111,15 +109,50 @@
 
 
 
-#pragma mark ArtJunkFactory
 
--(void) artJunkDidSave:(BOOL)success {
+- (IBAction)submitArtjunk:(id)sender {
+    NSNumber * longitude = [NSNumber numberWithDouble:self.artjunk.coordinate.longitude];
+    NSNumber * latitude = [NSNumber numberWithDouble:self.artjunk.coordinate.latitude];
     
+    NSURL *url = [NSURL URLWithString:@"http://www.brodynelson.com/artjunk/submit/index.php"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:self.artjunk.ajTitle forKey:@"title"];
+    [request setPostValue:longitude forKey:@"longitude"];
+    [request setPostValue:latitude forKey:@"latitude"];
+    [request setDelegate:self];
     
+    //add image
     
+    NSData *imageData=UIImageJPEGRepresentation(artjunk.ajImage, 0.3); 
+    [request setData:imageData withFileName:@"upload.jpg" andContentType:@"image/jpeg" forKey:@"uploadedfile"]; 
+    //show progress hud
     
-    if (success) {
-        //notify user save successful 
+    progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    progressHUD.delegate = self;
+    progressHUD.dimBackground = NO;
+    progressHUD.labelText = @"Uploading ArtJunk";
+    
+    [self.view addSubview:progressHUD];
+    [progressHUD show:YES];    
+    [request startAsynchronous];
+    
+}
+
+- (IBAction)cancelArtjunk:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{    
+    
+    if (request.responseStatusCode == 200) {
+        
+        //upload image
+        
+        NSLog(@"Response string:%@",[request responseString]);
+    
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ArtJunk Uploaded"
                                                         message:
                               @"The ArtJunk was saved successfully." 
@@ -140,17 +173,25 @@
         [alert show];
         
     }
-}
-
-
-- (IBAction)submitArtjunk:(id)sender {
-    
-    [factory upload:self.artjunk];
-    
     
 }
 
-- (IBAction)cancelArtjunk:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (void)requestFailed:(ASIHTTPRequest *)request
+{    
+    NSError *error = [request error];
+    NSLog(@"Error time:%@",error);
 }
+
+
+- (void)uploadRequestFinished:(ASIHTTPRequest *)request{    
+    NSString *responseString = [request responseString];
+    NSLog(@"Upload response %@", responseString);
+}
+
+- (void)uploadRequestFailed:(ASIHTTPRequest *)request{
+    
+    NSLog(@" Error - Statistics file upload failed: \"%@\"",[[request error] localizedDescription]); 
+}
+
+
 @end

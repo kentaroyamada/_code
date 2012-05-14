@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ArtJunk.h"
 #import "ArtJunkFactory.h"
+#import "ASIHTTPRequest.h"
+#import "MBProgressHUD.h"
 
-@interface TitleExpiryViewController : UIViewController <UITextFieldDelegate, ArtJunkFactoryDelegate, CLLocationManagerDelegate> {
+@interface TitleExpiryViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate> {
     @protected
-    ArtJunkFactory * factory;
+    MBProgressHUD * progressHUD;
 }
 
 @property (strong, nonatomic) ArtJunk * artjunk;

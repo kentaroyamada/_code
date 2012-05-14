@@ -45,6 +45,7 @@
 @implementation BrowseViewController
 @synthesize pageViewController,artjunks;
 @synthesize modelController = _modelController;
+@synthesize currentLocation, locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,14 +69,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    factory = [[ArtJunkFactory alloc] initWithDelegate:self];
-    [factory download];
+
+    //Init aj array
+    self.artjunks = [[NSMutableArray alloc] init];
     
+
+    //Start detecting location
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
+
+    // Initialize the progress status with a "connecting" status
+    progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    progressHUD.delegate = self;
+    progressHUD.dimBackground = NO;
+    progressHUD.labelText = @"Searching for nearby Artjunk";
+    
+    [self.view addSubview:progressHUD];
+    [progressHUD show:YES];
+    [self downloadArtjunks];
        
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
     
 
     
@@ -83,6 +100,7 @@
 }
 - (void)viewDidUnload
 {
+    [locationManager stopUpdatingLocation];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -124,14 +142,72 @@
 
 
 
-#pragma mark ArtJunkFactory
-
--(void) artJunkDidDownload:(NSMutableArray *)theArtjunks {
-    if (theArtjunks) {
-        self.artjunks = theArtjunks;
-        [self initPageView];
-    }
+-(void) downloadArtjunks {
     
+    NSNumber * longitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.longitude];
+    NSNumber * latitude = [NSNumber numberWithDouble:self.currentLocation.coordinate.latitude];
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.brodynelson.com/artjunk/get/index.php"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:longitude forKey:@"longitude"];
+    [request setPostValue:latitude forKey:@"latitude"];
+    [request setDelegate:self];
+    [request startAsynchronous];
+    
+
+
+}
+
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{    
+    NSError * error;
+    
+    if (request.responseStatusCode == 200) {
+        NSDictionary* json = [NSJSONSerialization 
+                              JSONObjectWithData:[request responseData] //1
+                              
+                              options:kNilOptions 
+                              error:&error];
+        
+        // Parse JSON, create artjunk objects, return array of aj
+        for (NSDictionary * artjunkDic in json) {
+            ArtJunk * anArtJunk = [[ArtJunk alloc] initWithContentsOfDictionary:artjunkDic];
+            [self.artjunks addObject:anArtJunk];
+        }
+    }
+    [self initPageView];
+    [progressHUD hide:YES];
+ 
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{    
+    NSError *error = [request error];
+    NSLog(@"Error:%@",error);
+}
+
+
+#pragma mark Core Location 
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    currentLocation = newLocation;
+        
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if(error.code == kCLErrorDenied) {
+        [locationManager stopUpdatingLocation];
+    } else if(error.code == kCLErrorLocationUnknown) {
+        // retry
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error retrieving location"
+                                                        message:[error description]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

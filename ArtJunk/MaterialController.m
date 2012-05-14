@@ -54,7 +54,7 @@
 {
     [super viewDidLoad];
     _artjunk = [[ArtJunk alloc] init];
-    _artjunk.ajImage = _photo;
+    
     
     
     _materials = [[NSMutableArray alloc] initWithCapacity:5];
@@ -104,6 +104,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _artjunk.ajImage = _photo;
 }
 
 - (void)viewDidAppear:(BOOL)animated

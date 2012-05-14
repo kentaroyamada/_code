@@ -54,11 +54,7 @@
     // will determine how the resulting request is handled
     [request setCompletionBlock:^{ 
         if (self.delegate && [self.delegate respondsToSelector:@selector(httpRequestWithMethod:completed:)]) {
-            //            NSLog(@"LMHttpManager %@", NSStringFromSelector(_cmd));
             NSLog(@"Response String%@", [request responseString]);
-            
-            
-            
             [self.delegate httpRequestWithMethod:self.method completed:request];
         }
     }];
@@ -100,7 +96,7 @@
 }
 
 - (void)httpPostWithMethod:(NSString *)name params:(NSString *)json{
-    NSLog(@"LMHttpManager:%@ JSON Sent:%@", NSStringFromSelector(_cmd),json);
+    NSLog(@"HttpManager:%@ JSON Sent:%@", NSStringFromSelector(_cmd),json);
     
     [self httpRequestWithMethod:name params:json post:YES];
 }
