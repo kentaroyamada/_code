@@ -18,7 +18,6 @@
 		1B57E65B14FBE18700B18468 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B57E65914FBE18700B18468 /* InfoPlist.strings */; };
 		1B57E65D14FBE18700B18468 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B57E65C14FBE18700B18468 /* main.m */; };
 		1B57E66114FBE18700B18468 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B57E66014FBE18700B18468 /* AppDelegate.m */; };
-		1B57E66414FBE18700B18468 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B57E66214FBE18700B18468 /* MainStoryboard.storyboard */; };
 		1B57E67214FBE41300B18468 /* PostJunkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B57E67114FBE41300B18468 /* PostJunkController.m */; };
 		1B57E67414FBE54200B18468 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B57E67314FBE54200B18468 /* MapKit.framework */; };
 		1B57E67614FC06A900B18468 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B57E67514FC06A900B18468 /* CoreLocation.framework */; };
@@ -38,6 +37,8 @@
 		1BAF9B1914FCE822001BF851 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF9B1814FCE822001BF851 /* CFNetwork.framework */; };
 		1BAF9B1B14FCE851001BF851 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAF9B1A14FCE851001BF851 /* libz.1.2.5.dylib */; };
 		1BAF9B1F14FCF152001BF851 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAF9B1E14FCF152001BF851 /* MBProgressHUD.m */; };
+		1BC931E6156190E200C04EE1 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC931E5156190E200C04EE1 /* LocationManager.m */; };
+		1BC931E915619AE800C04EE1 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC931E815619AE800C04EE1 /* MainStoryboard.storyboard */; };
 		1BC97B20155922FA00FF491D /* ArtJunkFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC97B1F155922FA00FF491D /* ArtJunkFactory.m */; };
 		1BC97B281559295400FF491D /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC97B271559295400FF491D /* HttpManager.m */; };
 		1BC97B2C15592E8800FF491D /* ArtJunk+NSDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC97B2B15592E8800FF491D /* ArtJunk+NSDictionary.m */; };
@@ -67,7 +68,6 @@
 		1B57E65E14FBE18700B18468 /* ArtJunk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArtJunk-Prefix.pch"; sourceTree = "<group>"; };
 		1B57E65F14FBE18700B18468 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1B57E66014FBE18700B18468 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1B57E66314FBE18700B18468 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = ../../../../../Dropbox/xcode/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1B57E67014FBE41300B18468 /* PostJunkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostJunkController.h; sourceTree = "<group>"; };
 		1B57E67114FBE41300B18468 /* PostJunkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostJunkController.m; sourceTree = "<group>"; };
 		1B57E67314FBE54200B18468 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -104,6 +104,9 @@
 		1BAF9B1A14FCE851001BF851 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		1BAF9B1D14FCF152001BF851 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		1BAF9B1E14FCF152001BF851 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1BC931E4156190E200C04EE1 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		1BC931E5156190E200C04EE1 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		1BC931E815619AE800C04EE1 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Resources/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1BC97B1E155922FA00FF491D /* ArtJunkFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtJunkFactory.h; sourceTree = "<group>"; };
 		1BC97B1F155922FA00FF491D /* ArtJunkFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtJunkFactory.m; sourceTree = "<group>"; };
 		1BC97B261559295400FF491D /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpManager.h; sourceTree = "<group>"; };
@@ -204,7 +207,7 @@
 			children = (
 				1B57E65F14FBE18700B18468 /* AppDelegate.h */,
 				1B57E66014FBE18700B18468 /* AppDelegate.m */,
-				1B57E66214FBE18700B18468 /* MainStoryboard.storyboard */,
+				1BC931E815619AE800C04EE1 /* MainStoryboard.storyboard */,
 				1B57E65814FBE18700B18468 /* ArtJunk-Info.plist */,
 				1B57E65914FBE18700B18468 /* InfoPlist.strings */,
 				1B57E65C14FBE18700B18468 /* main.m */,
@@ -324,6 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				1BC97B261559295400FF491D /* HttpManager.h */,
+				1BC931E4156190E200C04EE1 /* LocationManager.h */,
+				1BC931E5156190E200C04EE1 /* LocationManager.m */,
 				1BC97B271559295400FF491D /* HttpManager.m */,
 			);
 			name = Managers;
@@ -389,8 +394,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B57E65B14FBE18700B18468 /* InfoPlist.strings in Resources */,
-				1B57E66414FBE18700B18468 /* MainStoryboard.storyboard in Resources */,
 				1B2061E41516C92800D3AEE2 /* thumb1.png in Resources */,
+				1BC931E915619AE800C04EE1 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +431,7 @@
 				1BC97B44155AC1A000FF491D /* ModelController.m in Sources */,
 				1BC97B48155AC1FD00FF491D /* DataViewController.m in Sources */,
 				1B65C25C155BFEC5003FB510 /* TitleExpiryViewController.m in Sources */,
+				1BC931E6156190E200C04EE1 /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,14 +444,6 @@
 				1B57E65A14FBE18700B18468 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1B57E66214FBE18700B18468 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B57E66314FBE18700B18468 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

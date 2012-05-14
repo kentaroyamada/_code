@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ArtJunk.h"
 
-@interface DataViewController : UIViewController
+@interface DataViewController : UIViewController <CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *ajImage;
 
 @property (nonatomic, retain) IBOutlet UILabel * titleLabel;
@@ -19,4 +19,8 @@
 @property (strong, nonatomic) id dataObject;
 @property (strong, nonatomic) ArtJunk * artjunk;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView * av;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *currentLocation;
+
+
 @end
