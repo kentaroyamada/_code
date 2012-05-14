@@ -1,0 +1,68 @@
+TArtJunk
+v7
+r1
+cCheck dependencies
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/ArtJunk/../../../../../Dropbox/xcode/MainStoryboard.storyboard
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/ArtJunk/Resources/thumb1.png
+c000000004F6691900000000000000CFD
+t1332122000
+s3325
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/ArtJunk/en.lproj/InfoPlist.strings
+c000000004F4BAA07000000000000002D
+t1330358791
+s45
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Info.plist
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Resources/MainStoryboard.storyboard
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Resources/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Resources/thumb1.png
+t2
+s0
+
+NArtJunk/ArtJunk-Info.plist
+c000000004F66A4140000000000000525
+t1332126740
+s1317
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies358625942#358625942#0(193"[BEROR]error: There is no SDK with the name or path 'iphoneos'[BEROR]Code Signing Identity 'iPhone Developer' does not match any valid, non-expired, code-signing certificate in your keychain.2(4@55"error: There is no SDK with the name or path 'iphoneos'358625942#18446744073709551615#0#0(1@0"0(4@122"Code Signing Identity 'iPhone Developer' does not match any valid, non-expired, code-signing certificate in your keychain.358625942#18446744073709551615#0#0(1@0"0(0#1#0"17198725632#0"0#
+
+CCopyStringsFile /Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Resources/en.lproj/InfoPlist.strings ArtJunk/en.lproj/InfoPlist.strings
+r0
+
+CCpResource build/Debug/ArtJunk.app/Contents/Resources/MainStoryboard.storyboard ArtJunk/../../../../../Dropbox/xcode/MainStoryboard.storyboard
+r0
+
+CCpResource build/Debug/ArtJunk.app/Contents/Resources/thumb1.png ArtJunk/Resources/thumb1.png
+r0
+
+CProcessInfoPlistFile /Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app/Contents/Info.plist ArtJunk/ArtJunk-Info.plist
+r0
+
+CTouch /Users/kentaroyamada/KENTARO_12/artjunk_repo/_code/build/Debug/ArtJunk.app
+r0
+
